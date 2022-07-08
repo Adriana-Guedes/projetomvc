@@ -2,20 +2,13 @@
 <div class="col-x1-4 col-md-6 mx-auto p-5">
     <div class="card">
         <div class="card-header bg-secondary text-white" >
-            <h2>Cadastre-se</h2>
+            <h2>Login</h2>
 </div>
-            <small>Prencha o formulario abaixo para fazer seu cadastro</small>
+            <small>Informe seus dados para fazer login!</small>
 
             <!--no atcion informar o destino dos dados para este formulario, para carregar os metodos da classe informada -->
-            <form name="cadatrar" method="POST" action="<?=URL?>/usuarios/cadastrar">
-            <div class="form-group">
-                <label for="nome">Nome: <sup class="text-danger">* </label>
-                <input type="text" name="nome" id="nome"    value="<?=$dados['nome']?>"   class="form-control <?= $dados['nome_erro'] ? 'is-invalid' : ''  ?>" >   
-                <div class="invalid-feedback"> 
-                    <?= $dados['nome_erro'] ?> 
-                </div>
-            </div>
-
+            <form name="login" method="POST" action="<?=URL?>/usuarios/login">
+          
             <div class="form-group">
                 <label for="email">Email: <sup class="text-danger">*</label>
                 <input type="text" name="email" id="email"    value="<?=$dados['email']?>"   class="form-control <?= $dados['email_erro'] ? 'is-invalid' : ''  ?>"  >   
@@ -34,22 +27,14 @@
             </div>
 
 
-            <div class="form-group">
-                <label for="confirmar_senha">Confirme a Senha: <sup class="text-danger">*</label>
-                <input type="password" name="confirmar_senha" id="confirmar_senha"     value="<?=$dados['confirmar_senha']?>"   class="form-control <?= $dados['confirmar_senha_erro'] ? 'is-invalid' : ''  ?>" >   
-                <div class="invalid-feedback"> 
-                    <?=  $dados['confirmar_senha_erro']?> 
-                </div>
-            
-            </div>
-              
+          
 
                 <div class="row">
                     <div class="col-md-6">
-                    <input type="submit" value="Cadastar" class="btn btn-info btn-block">
+                    <input type="submit" value="Login" class="btn btn-info btn-block">
              </div>
                     <div class="col">
-                    <a href="<?= URL ?>/usuarios/login">Você tem uma conta? Faça Login</a>
+                    <a href="<?= URL?>/usuarios/cadastrar">Não tem uma conta? Cadastra-se</a>
                 
 
                     </div>

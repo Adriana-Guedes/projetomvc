@@ -3,6 +3,11 @@
 
 class Usuarios extends Controller{
 
+    public function __construct()
+    {
+        $this->usuarioModel = $this->model('UsuarioModel');
+    }
+
 public function cadastrar(){
 
     //PARA EVITA USUARIO MAL INTENCIONADOS(GARANTE QUE OS DADOS SEJAM RECEBIDOS APENAS APÓS TUDO PREENCHIDO E BOTÃO CLICADO)
@@ -45,6 +50,9 @@ else:
     elseif(!filter_var($formulario['email'], FILTER_VALIDATE_EMAIL)):
         $dados['email_erro'] = 'O e-mail informado é invalido';   
 
+    elseif($this->usuarioModel->checarEmail($formulario['email'])):
+        $dados['email_erro'] = 'O email informado esta cadastrado';  
+
     elseif (strlen($formulario['senha']) <6):
         $dados['senha_erro'] = 'A senha deve ter no minimo  6 caracteres';
     elseif($formulario['senha'] != $formulario['confirmar_senha']):
@@ -52,27 +60,37 @@ else:
 
     else:
         $dados['senha'] = password_hash($formulario['senha'],PASSWORD_DEFAULT);
-        echo 'Pode cadastrar! ';
+
+        if($this->usuarioModel->armazenar($dados)):
+            echo 'Cadastro realizado com sucesso! <hr>';
+
+    else:
+        die("Erro ao armazenar usuario no banco de dados");
+    endif;
+      
     endif;
 endif;
 
 
     //echo 'Senha Original: '.$formulario['senha'].'<hr>';
     //não usada mais 
-    //echo 'Senha md5: '.md5($formulario['senha']).'<hr>';
-    // echo 'Senha sha1: '.sha1($formulario['senha']).'<hr>';
-
+    //echo 'Senha md5: '.md5($formulario['sen••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     //senha criptografada fortemente
     //$SenhaSegura = password_hash($formulario['senha'],PASSWORD_DEFAULT);
    // echo 'Senha hash: '.$SenhaSegura.'<hr>';
 
-        var_dump($formulario);
+       // var_dump($formulario);(para debugar)
     else:
         $dados = [
             'nome' => '',
             'email' => '',
             'senha' => '',
             'confirmar_senha' => '',
+            'nome_erro' => '',
+            'email_erro' => '',
+            'senha_erro' => '',
+            'confirmar_senha_erro' => '',
+
         ];
 
     endif;
@@ -80,6 +98,67 @@ endif;
     $this->view('usuarios/cadastrar',$dados);
 }
 
+
+
+
+
+
+
+public function login(){
+
+    //PARA EVITA USUARIO MAL INTENCIONADOS(GARANTE QUE OS DADOS SEJAM RECEBIDOS APENAS APÓS TUDO PREENCHIDO E BOTÃO CLICADO)
+    $formulario = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+   
+    if(isset($formulario)):
+        $dados = [
+          
+            'email' => trim($formulario['email']),
+            'senha' => trim($formulario['senha']),
+          
+
+        ];
+        //verificar se os campos estão vazios
+     if(in_array("", $formulario)):
+
+        if(empty($formulario['email'])):
+            $dados['email_erro'] = 'Preencha o campo e-mail'; //para retornar a obrigatoriedade do campo
+        endif;
+
+        if(empty($formulario['senha'])):
+            $dados['senha_erro'] = 'Preencha o campo senha'; //para retornar a obrigatoriedade do campo
+           
+        endif;
+
+else:
+    //expressões regulares - regex ( corrigir conforme video 35)
+    if(!filter_var($formulario['email'], FILTER_VALIDATE_EMAIL)):
+        $dados['email_erro'] = 'O e-mail informado é invalido';   
+
+    else:
+       
+            echo 'Pode fazer  login <hr>';
+
+      
+    endif;
+endif;
+
+
+        var_dump($formulario);
+    else:
+        $dados = [
+            
+            'email' => '',
+            'senha' => '',
+            'email_erro' => '',
+            'senha_erro' => '',
+        
+
+        ];
+
+    endif;
+
+    $this->view('usuarios/login',$dados);
+}
 
 
 }
