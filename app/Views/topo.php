@@ -21,7 +21,11 @@
 
             </ul>
 
-            <!--AQUI ONDE FICA O DIRECIONAMENTO DOS BOTÕES DA PAGINA-->
+                    <?php if(isset($_SESSION['usuario_id'])): ?>
+                        <?=$_SESSION['usuario_nome'] ?>
+
+                        <?php else: ?>
+                            <!--AQUI ONDE FICA O DIRECIONAMENTO DOS BOTÕES DA PAGINA-->
                     <span class="navbar-text">
             <a class="btn btn-info"  href="<?= URL ?>/usuarios/cadastrar" data-tooltip="tooltip" title="Não tem uma conta? Cadastre-se">Cadastra-se</a>
             <span class="navbar-text">
@@ -29,21 +33,12 @@
 
                     </span>
 
+                    <?php endif; ?>
+
 
 
             </div>
 
         </nav>
-
-
-
-
         </div>
-
-
-
-
-
-
-
 </header>

@@ -135,15 +135,21 @@ else:
         $dados['email_erro'] = 'O e-mail informado é invalido';   
 
     else:
-       
-            echo 'Pode fazer  login <hr>';
+         $usuario = $this->usuarioModel->checarLogin($formulario['email'], $formulario['senha']);
+         
+        
+         if($usuario):
+            $this->criarSessaoUsuario($usuario);
+         else:
+            echo 'Usuario ou senha invalidos <hr>';
 
-      
+
+       endif;
     endif;
 endif;
 
 
-        var_dump($formulario);
+        //var_dump($formulario); debug
     else:
         $dados = [
             
@@ -160,5 +166,11 @@ endif;
     $this->view('usuarios/login',$dados);
 }
 
+private function criarSessaoUsuario($usuario){
 
+    //variavel super global para criar uma sessão
+    $_SESSION['usuario_id'] = $usuario->id;
+    $_SESSION['nome'] = $usuario->nome;
+    $_SESSION['email'] = $usuario->email;
+    }
 }
