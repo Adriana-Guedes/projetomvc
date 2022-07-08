@@ -23,7 +23,7 @@
 
 
                     <span class="navbar-text">
-            <a class="btn btn-info"  href="#" data-tooltip="tooltip" title="Não tem uma conta? Cadastre-se">Cadastra-se</a>
+            <a class="btn btn-info"  href="<?= URL ?>/usuarios/cadastrar" data-tooltip="tooltip" title="Não tem uma conta? Cadastre-se">Cadastra-se</a>
             <span class="navbar-text">
             <a class="btn btn-info"  href="#" data-tooltip="tooltip" title="Tem uma conta? Faça login">Entrar</a>
 
