@@ -147,9 +147,6 @@ else:
        endif;
     endif;
 endif;
-
-
-        //var_dump($formulario); debug
     else:
         $dados = [
             
@@ -170,7 +167,17 @@ private function criarSessaoUsuario($usuario){
 
     //variavel super global para criar uma sessão
     $_SESSION['usuario_id'] = $usuario->id;
-    $_SESSION['nome'] = $usuario->nome;
-    $_SESSION['email'] = $usuario->email;
+    $_SESSION['usuario_nome'] = $usuario->nome;
+    $_SESSION['usuario_email'] = $usuario->email;
+    }
+
+    public function sair(){
+        unset($_SESSION['usuario_id']);
+        unset($_SESSION['usuario_nome']);
+        unset($_SESSION['usuario_email']);
+
+        session_destroy();
+        //após destruição da sessão do usuario ele redireciona para o index
+        header('Location: '.URL.'/paginas/index');
     }
 }
