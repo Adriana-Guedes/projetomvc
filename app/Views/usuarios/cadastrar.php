@@ -3,7 +3,9 @@
     <div class="card">
         <div class="card-header bg-secondary text-white" >
             <h2>Cadastre-se</h2>
-</div>
+                </div>
+            
+                <div class="card-body" >
             <small>Prencha o formulario abaixo para fazer seu cadastro</small>
 
             <!--no atcion informar o destino dos dados para este formulario, para carregar os metodos da classe informada -->

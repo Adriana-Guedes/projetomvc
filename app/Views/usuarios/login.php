@@ -3,8 +3,12 @@
     <div class="card">
         <div class="card-header bg-secondary text-white" >
             <h2>Login</h2>
-</div>
-            <small>Informe seus dados para fazer login!</small>
+        </div>
+        <div class="card-body" >
+          
+        <?=Sessao::mensagem('usuario'); ?> 
+       
+          <p class="card-text" > <small class="text-muted">Informe seus dados para fazer login!</small></p>  
 
             <!--no atcion informar o destino dos dados para este formulario, para carregar os metodos da classe informada -->
             <form name="login" method="POST" action="<?=URL?>/usuarios/login">
@@ -34,13 +38,13 @@
                     <input type="submit" value="Login" class="btn btn-info btn-block">
              </div>
                     <div class="col">
-                    <a href="<?= URL?>/usuarios/cadastrar">Não tem uma conta? Cadastra-se</a>
+                    <a href="<?= URL?>/usuarios/cadastrar"> Não tem uma conta? Cadastra-se </a>
                 
-
+                    
+                     </form>
                     </div>
+                </div>
             </div>
-
-
         </div>
     </div>
 

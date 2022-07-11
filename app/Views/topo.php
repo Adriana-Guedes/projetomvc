@@ -25,7 +25,7 @@
                         <span class="navbar-text">
                         <p>Olá  <?= $_SESSION['usuario_nome'] ?>, Seja bem vindo(a)!</p>
                         <a  class="btn btn-sm btn-danger" href="<?= URL ?>/usuarios/sair">Sair</a>
-                        
+                       
 
                         <?php else: ?>
                             <!--AQUI ONDE FICA O DIRECIONAMENTO DOS BOTÕES DA PAGINA-->

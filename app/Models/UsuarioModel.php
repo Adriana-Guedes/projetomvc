@@ -46,7 +46,7 @@ class UsuarioModel{
 
 
     public function checarLogin($email, $senha){
-        $this->db->query("SELECT *  FROM usuarios WHERE email = :e");
+        $this->db->query("SELECT * FROM usuarios WHERE email = :e");
         $this->db->bind(":e", $email);
        
         //var_dump($this->db->resultado()); debugar

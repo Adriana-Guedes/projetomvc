@@ -1,13 +1,22 @@
+
 <?php
+
+
+//----------------------PARA EXIBIR OS ERROS NO BROWSER------------------------//
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
+//----------------------PARA EXIBIR OS ERROS NO BROWSER------------------------// 
+
+
+
 session_start();
 
-
-
 include './../app/configuracao.php';
-include './../app/Libraries/Rota.php';
-include './../app/Libraries/Controller.php';
-include './../app/Libraries/Database.php';
-//include './../app/autoload.php'; precisa arrumar
+include './../app/autoload.php' //para carregar as
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

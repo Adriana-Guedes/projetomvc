@@ -62,10 +62,16 @@ else:
         $dados['senha'] = password_hash($formulario['senha'],PASSWORD_DEFAULT);
 
         if($this->usuarioModel->armazenar($dados)):
-            echo 'Cadastro realizado com sucesso! <hr>';
-
+            Sessao::mensagem('usuario','Cadastro realizado com sucesso!');
+            Url::redirecionar('usuarios/login');
+          
+     
+            
     else:
         die("Erro ao armazenar usuario no banco de dados");
+
+
+    
     endif;
       
     endif;
@@ -141,8 +147,10 @@ else:
          if($usuario):
             $this->criarSessaoUsuario($usuario);
          else:
-            echo 'Usuario ou senha invalidos <hr>';
-
+            
+            Sessao::mensagem('usuario','Usuario ou senha invalidos','alert alert-danger');
+            Url::redirecionar('usuarios/login');
+            
 
        endif;
     endif;
@@ -169,15 +177,23 @@ private function criarSessaoUsuario($usuario){
     $_SESSION['usuario_id'] = $usuario->id;
     $_SESSION['usuario_nome'] = $usuario->nome;
     $_SESSION['usuario_email'] = $usuario->email;
+
+    Url::redirecionar('posts');
+
+   
+
     }
+
+
 
     public function sair(){
         unset($_SESSION['usuario_id']);
         unset($_SESSION['usuario_nome']);
         unset($_SESSION['usuario_email']);
 
-        session_destroy();
-        //após destruição da sessão do usuario ele redireciona para o index
-        header('Location: '.URL.'/paginas/index');
+        session_destroy();  
+        Url::redirecionar('usuarios/login'); //após destruição da sessão do usuario ele redireciona para a pagina de login
+       
+      
     }
 }
