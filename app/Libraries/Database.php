@@ -1,7 +1,7 @@
 <?php
 class Database{
 
-
+    /* POSSO FAZER A CONFIGURAÇÃO DO BANCO ASSIM OU USANDO AS CONSTANTES GRAVADAS EM CONFIGURAÇÃO COMO ARRAY
     private  $hostname = "127.0.0.1";
     private  $bancodedados = "framework";
     private  $usuario = "root";
@@ -9,6 +9,18 @@ class Database{
     private  $porta = '3306';
     private  $dbh;
     private  $stmt;
+    */
+
+
+    /* INFORMAÇÕES INSERIDOS DO ARQUIVO DE CONFIGURAÇÃO EM FORMATO DE ARRAY */
+    private  $hostname = DB['HOST'];
+    private  $bancodedados = DB['BANCO'];
+    private  $usuario = DB['USUARIO'];
+    private  $senha = DB['SENHA'];
+    private  $porta = DB['PORTA'];
+    private  $dbh;
+    private  $stmt; 
+    
 
     public function __construct()
     {

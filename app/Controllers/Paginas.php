@@ -5,10 +5,19 @@ class Paginas extends Controller{
     
     
     public function index(){
+     //se tiver logado direcionar para posts
+        if(Sessao::estaLogado()):
+         Url::redirecionar('posts');
+
+        endif;
+
+
+
+
+
       $dados = [
       'titulo' => 'Pagina Inicial',
-      'descricao'=> 'Curso de PHP7',
-      
+            
         ];
 
         //$this->view('paginas/home', ['titulo' => 'Pagina Inicial', 'descricao'=> 'Curso de PHP7']);
@@ -19,7 +28,7 @@ class Paginas extends Controller{
 
     public function sobre(){
         $dados = [
-        'tituloPagina' => 'Pagina Sobre Nós'  
+        'tituloPagina' => APP_NOME 
             
           ];
       

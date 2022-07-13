@@ -63,10 +63,7 @@ else:
 
         if($this->usuarioModel->armazenar($dados)):
             Sessao::mensagem('usuario','Cadastro realizado com sucesso!');
-            Url::redirecionar('usuarios/login');
-          
-     
-            
+            Url::redirecionar('usuarios/login');          
     else:
         die("Erro ao armazenar usuario no banco de dados");
 

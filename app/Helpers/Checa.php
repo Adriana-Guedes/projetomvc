@@ -21,4 +21,15 @@ class Checa {
         endif;
 
     }
+
+
+    public static function databr($data){
+    if(isset($data)):
+        return date('d/m/y H:i',strtotime($data));
+    else:
+        return false;
+
+    endif;
+
+    }
 }

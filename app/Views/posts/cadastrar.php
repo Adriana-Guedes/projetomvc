@@ -5,15 +5,15 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?=URL?>/posts">Posts</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Cadastrar</li>
+    <li class="breadcrumb-item active" aria-current="page">Escrever</li>
   </ol>
 </nav>
 
     <div class="card">
         <div class="card-header bg-secondary text-white" >
-            <h2>Cadastrar Post</h2>
+            <h2>Escrever Post</h2>
         </div>
-        <div class="card-body" >
+        <div class="card-body bg-ligth" >
       
             <!--no atcion informar o destino dos dados para este formulario, para carregar os metodos da classe informada -->
             <form name="login" method="POST" action="<?=URL?>/posts/cadastrar">
@@ -29,7 +29,7 @@
 
             <div class="form-group">
                 <label for="texto">Texto: <sup class="text-danger">*</label>
-                <textarea name="texto" name="texto" id="texto"    value="<?=$dados['texto']?>"   class="form-control <?= $dados['texto_erro'] ? 'is-invalid' : ''  ?>"><?= $dados['texto']?> </textarea>   
+                <textarea name="texto" name="texto" id="texto"    value="<?=$dados['texto']?>"   class="form-control <?= $dados['texto_erro'] ? 'is-invalid' : ''  ?>"  rows="5" ><?= $dados['texto']?> </textarea>   
                 <div class="invalid-feedback"> 
                     <?= $dados['texto_erro'] ?> 
                 </div>
